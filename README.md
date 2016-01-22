@@ -37,13 +37,13 @@ class AppKernel extends Kernel
 
 **1. Implement `RouteCollectionProviderInterface`**
 
-**2. Register service with "symplify.route_collection_provider" tag 
+**2. Register service with "symplify.route_collection_provider" tag**
 
 ```yml
-    some_module.route_provider:
-        class: SomeModule\Routing\SomeRouteCollectionProvider
-        tags:
-            - { name: symplify.route_collection_provider }
+some_module.route_provider:
+    class: SomeModule\Routing\SomeRouteCollectionProvider
+    tags:
+        - { name: symplify.route_collection_provider }
 ```
 
 That's all!
