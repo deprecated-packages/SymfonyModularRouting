@@ -37,6 +37,21 @@ class AppKernel extends Kernel
 
 **1. Implement `RouteCollectionProviderInterface`**
 
+```php
+use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
+
+final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
+{
+    public function getRouteCollection() : RouteCollection
+    {
+        $routeCollection = new RouteCollection();
+        $routeCollection->add('my_route', new Route('/hello'));
+
+        return $routeCollection;
+    }
+}
+```
+
 **2. Register service with "symplify.route_collection_provider" tag**
 
 ```yml
