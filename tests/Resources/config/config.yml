@@ -1,0 +1,13 @@
+framework:
+    router: { resource: "routing.yml" }
+
+
+parameters:
+    kernel.secret: 123
+
+
+services:
+    some.service:
+        class: Symplify\ModularRouting\Tests\Routing\SomeRouteCollectionProvider
+        tags:
+            - { name: symplify.route_collection_provider }
