@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="another_route" path="/another-path">
-        <default key="_controller">AnotherController</default>
+    <route id="xml-loaded-file" path="/xml-route">
+        <default key="_controller">XmlLoadedController</default>
     </route>
 </routes>

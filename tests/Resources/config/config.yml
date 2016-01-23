@@ -7,7 +7,12 @@ parameters:
 
 
 services:
-    some.service:
-        class: Symplify\ModularRouting\Tests\Routing\SomeRouteCollectionProvider
+    php_routes:
+        class: Symplify\ModularRouting\Tests\Routing\RouteCollectionProviderSource\PhpRouteCollectionProvider
+        tags:
+            - { name: symplify.route_collection_provider }
+
+    file_loading_routes:
+        class: Symplify\ModularRouting\Tests\Routing\AbstractRouteCollectionProviderSource\FilesRouteCollectionProvider
         tags:
             - { name: symplify.route_collection_provider }

@@ -9,6 +9,9 @@ final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 {
     public function getRouteCollection() : RouteCollection
     {
-        return $this->loadRouteCollectionFromFiles([__DIR__.'/routes.xml', __DIR__.'/routes.yml']);
+        return $this->loadRouteCollectionFromFiles([
+            __DIR__.'/routes.xml',
+            __DIR__.'/routes.yml'
+        ]);
     }
 }

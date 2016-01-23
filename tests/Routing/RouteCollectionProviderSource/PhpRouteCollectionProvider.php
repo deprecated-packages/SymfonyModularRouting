@@ -1,12 +1,12 @@
 <?php
 
-namespace Symplify\ModularRouting\Tests\Routing;
+namespace Symplify\ModularRouting\Tests\Routing\RouteCollectionProviderSource;
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
 
-final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
+final class PhpRouteCollectionProvider implements RouteCollectionProviderInterface
 {
     public function getRouteCollection() : RouteCollection
     {

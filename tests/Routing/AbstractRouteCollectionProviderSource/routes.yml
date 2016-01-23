@@ -1,4 +1,4 @@
-some_route:
-    path: "/some-path"
+yml-loaded-file:
+    path: "/yml-route"
     defaults:
-        _controller: "SomeController"
+        _controller: "YmlLoadedController"
