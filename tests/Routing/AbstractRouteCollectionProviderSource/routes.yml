@@ -1,0 +1,4 @@
+some_route:
+    path: "/some-path"
+    defaults:
+        _controller: "SomeController"
