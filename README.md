@@ -36,40 +36,40 @@ class AppKernel extends Kernel
 
 ## Usage
 
-**1. Implement `[RouteCollectionProviderInterface](blob/master/src/Contract/Routing/RouteCollectionProviderInterface.php)`**
+1. Implement [`RouteCollectionProviderInterface`](src/Contract/Routing/RouteCollectionProviderInterface.php)
 
-```php
-use Symfony\Component\Routing\RouteCollection;
-use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
-
-final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
-{
-    public function getRouteCollection() : RouteCollection
+    ```php
+    use Symfony\Component\Routing\RouteCollection;
+    use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
+    
+    final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
     {
-        $routeCollection = new RouteCollection();
-        $routeCollection->add('my_route', new Route('/hello'));
-
-        return $routeCollection;
+        public function getRouteCollection() : RouteCollection
+        {
+            $routeCollection = new RouteCollection();
+            $routeCollection->add('my_route', new Route('/hello'));
+    
+            return $routeCollection;
+        }
     }
-}
-```
+    ```
 
-**2. Register service with a tag**
+2. Register service with a tag
 
-```yml
-services:
-    some_module.route_provider:
-        class: SomeModule\Routing\SomeRouteCollectionProvider
-        tags:
-            - { name: symplify.route_collection_provider }
-```
+    ```yml
+    services:
+        some_module.route_provider:
+            class: SomeModule\Routing\SomeRouteCollectionProvider
+            tags:
+                - { name: symplify.route_collection_provider }
+    ```
 
 That's all!
 
 
 ### Loading YML/XML files
 
-In case you want to load these files, just use `[AbstractRouteCollectionProvider](blob/master/src/Routing/AbstractRouteCollectionProvider.php)`
+In case you want to load these files, just use [`AbstractRouteCollectionProvider`](src/Routing/AbstractRouteCollectionProvider.php)
 with helper methods.
 
 ```php
