@@ -24,7 +24,6 @@ final class SetLoaderCompilerPass implements CompilerPassInterface
         $abstractRouteCollectionProviders = $classListBuilder->getByType(AbstractRouteCollectionProvider::class);
 
         foreach ($abstractRouteCollectionProviders as $serviceId) {
-
             $definition = $containerBuilder->getDefinition($serviceId);
             $definition->addMethodCall('setLoaderResolver', [new Reference('routing.resolver')]);
         }

@@ -3,7 +3,6 @@
 namespace Symplify\ModularRouting\Tests;
 
 use PHPUnit_Framework_TestCase;
-use Symfony\Component\HttpKernel\Tests\Controller;
 use Symfony\Component\Routing\RouterInterface;
 
 final class CompleteTest extends PHPUnit_Framework_TestCase
