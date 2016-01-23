@@ -7,6 +7,7 @@
 [![Latest stable](https://img.shields.io/packagist/v/symplify/modular-routing.svg?style=flat-square)](https://packagist.org/packages/symplify/modular-routing)
 
 To add routes you usually need to add few lines to `app/config/routing.yml`. If you have over dozens of modules, it would be easy to get lost in it.
+
 **Thanks to this router, you can add them easily as via service loader**.
 
 ## Install
@@ -35,9 +36,10 @@ class AppKernel extends Kernel
 
 ## Usage
 
-**1. Implement `RouteCollectionProviderInterface`**
+**1. Implement `[RouteCollectionProviderInterface](blob/master/src/Contract/Routing/RouteCollectionProviderInterface.php)`**
 
 ```php
+use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
 
 final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
@@ -52,16 +54,43 @@ final class SomeRouteCollectionProvider implements RouteCollectionProviderInterf
 }
 ```
 
-**2. Register service with "symplify.route_collection_provider" tag**
+**2. Register service with a tag**
 
 ```yml
-some_module.route_provider:
-    class: SomeModule\Routing\SomeRouteCollectionProvider
-    tags:
-        - { name: symplify.route_collection_provider }
+services:
+    some_module.route_provider:
+        class: SomeModule\Routing\SomeRouteCollectionProvider
+        tags:
+            - { name: symplify.route_collection_provider }
 ```
 
 That's all!
+
+
+### Loading YML/XML files
+
+In case you want to load these files, just use `[AbstractRouteCollectionProvider](blob/master/src/Routing/AbstractRouteCollectionProvider.php)`
+with helper methods.
+
+```php
+use Symfony\Component\Routing\RouteCollection;
+use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
+
+final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
+{
+    public function getRouteCollection() : RouteCollection
+    {
+        return $this->loadRouteCollectionFromFiles([
+            __DIR__.'/routes.xml',
+            __DIR__.'/routes.yml',
+        ]);
+        
+        // on in case you have only 1 file
+        // return $this->loadRouteCollectionFromFile(__DIR__.'/routes.yml');
+    }
+}
+
+```
 
 
 # Testing
