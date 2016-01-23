@@ -10,7 +10,6 @@ namespace Symplify\ModularRouting\DependencyInjection\CompilerPass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-use Symplify\ModularRouting\DependencyInjection\ClassListBuilder;
 use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
 
 final class SetLoaderCompilerPass implements CompilerPassInterface
@@ -20,12 +19,10 @@ final class SetLoaderCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $containerBuilder)
     {
-        $classListBuilder = new ClassListBuilder($containerBuilder);
-        $abstractRouteCollectionProviders = $classListBuilder->getByType(AbstractRouteCollectionProvider::class);
-
-        foreach ($abstractRouteCollectionProviders as $serviceId) {
-            $definition = $containerBuilder->getDefinition($serviceId);
-            $definition->addMethodCall('setLoaderResolver', [new Reference('routing.resolver')]);
+        foreach ($containerBuilder->getDefinitions() as $definition) {
+            if (is_subclass_of($definition->getClass(), AbstractRouteCollectionProvider::class)) {
+                $definition->addMethodCall('setLoaderResolver', [new Reference('routing.resolver')]);
+            }
         }
     }
 }
