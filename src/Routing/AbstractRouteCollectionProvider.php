@@ -12,6 +12,7 @@ namespace Symplify\ModularRouting\Routing;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
+use Symplify\ModularRouting\Exception\FileNotFoundException;
 
 abstract class AbstractRouteCollectionProvider implements RouteCollectionProviderInterface
 {
@@ -32,6 +33,12 @@ abstract class AbstractRouteCollectionProvider implements RouteCollectionProvide
      */
     protected function loadRouteCollectionFromFile(string $path) : RouteCollection
     {
+        if (!file_exists($path)) {
+            throw new FileNotFoundException(
+                sprintf('File "%s" was not found.', $path)
+            );
+        }
+
         $loader = $this->loaderResolver->resolve($path);
         if (null === $loader) {
             return new RouteCollection();
