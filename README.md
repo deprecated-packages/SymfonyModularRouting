@@ -39,6 +39,7 @@ class AppKernel extends Kernel
 1. Implement [`RouteCollectionProviderInterface`](src/Contract/Routing/RouteCollectionProviderInterface.php)
 
     ```php
+    use Symfony\Component\Routing\Route;
     use Symfony\Component\Routing\RouteCollection;
     use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
     
