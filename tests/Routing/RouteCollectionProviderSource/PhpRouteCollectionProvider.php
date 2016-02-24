@@ -8,7 +8,10 @@ use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
 
 final class PhpRouteCollectionProvider implements RouteCollectionProviderInterface
 {
-    public function getRouteCollection() : RouteCollection
+    /**
+     * {@inheritdoc}
+     */
+    public function getRouteCollection()
     {
         $routeCollection = new RouteCollection();
         $routeCollection->add('my_route', new Route('/hello'));

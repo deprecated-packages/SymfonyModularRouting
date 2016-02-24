@@ -1,7 +1,5 @@
 <?php
 
-declare (strict_types = 1);
-
 /*
  * This file is part of Symplify
  * Copyright (c) 2016 Tomas Votruba (http://tomasvotruba.cz).
@@ -31,7 +29,7 @@ abstract class AbstractRouteCollectionProvider implements RouteCollectionProvide
      *
      * @return RouteCollection
      */
-    protected function loadRouteCollectionFromFile(string $path) : RouteCollection
+    protected function loadRouteCollectionFromFile($path)
     {
         if (!file_exists($path)) {
             throw new FileNotFoundException(
@@ -49,8 +47,10 @@ abstract class AbstractRouteCollectionProvider implements RouteCollectionProvide
 
     /**
      * @param string[] $paths
+     *
+     * @return RouteCollection
      */
-    protected function loadRouteCollectionFromFiles(array $paths) : RouteCollection
+    protected function loadRouteCollectionFromFiles(array $paths)
     {
         $routeCollection = new RouteCollection();
 

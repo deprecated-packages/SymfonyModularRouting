@@ -2,12 +2,14 @@
 
 namespace Symplify\ModularRouting\Tests\Routing\AbstractRouteCollectionProviderSource;
 
-use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
 
 final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 {
-    public function getRouteCollection() : RouteCollection
+    /**
+     * {@inheritdoc}
+     */
+    public function getRouteCollection()
     {
         return $this->loadRouteCollectionFromFiles([
             __DIR__.'/routes.xml',
