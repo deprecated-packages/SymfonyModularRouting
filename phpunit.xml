@@ -4,14 +4,12 @@
     syntaxCheck="true"
     verbose="true"
 >
-    <testsuites>
-        <testsuite>
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
+    <testsuite>
+        <directory>tests</directory>
+    </testsuite>
     <filter>
         <whitelist>
-            <directory suffix=".php">src</directory>
+            <directory>src</directory>
         </whitelist>
     </filter>
 </phpunit>

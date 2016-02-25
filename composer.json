@@ -1,6 +1,6 @@
 {
     "name": "symplify/modular-routing",
-    "description": "Load your routes with a simple service.",
+    "description": "Load your Symfony routes with a simple service.",
     "keywords": ["Symfony", "routing", "provider", "modular"],
     "license": "MIT",
     "require": {
