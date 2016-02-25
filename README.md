@@ -54,14 +54,12 @@ class AppKernel extends Kernel
     }
     ```
 
-2. Register service with a tag
+2. Register as service
 
     ```yml
     services:
         some_module.route_provider:
             class: SomeModule\Routing\SomeRouteCollectionProvider
-            tags:
-                - { name: symplify.route_collection_provider }
     ```
 
 That's all!
@@ -78,7 +76,10 @@ use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
 
 final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 {
-    public function getRouteCollection() : RouteCollection
+    /** 
+     * @return RouteCollection
+     */
+    public function getRouteCollection()
     {
         return $this->loadRouteCollectionFromFiles([
             __DIR__.'/routes.xml',
