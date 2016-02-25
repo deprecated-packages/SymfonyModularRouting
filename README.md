@@ -44,7 +44,10 @@ class AppKernel extends Kernel
     
     final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
     {
-        public function getRouteCollection() : RouteCollection
+        /**
+         * @return RouteCollection
+         */
+        public function getRouteCollection()
         {
             $routeCollection = new RouteCollection();
             $routeCollection->add('my_route', new Route('/hello'));
