@@ -13,7 +13,7 @@ To add routes you usually need to add few lines to `app/config/routing.yml`. If 
 ## Install
 
 ```bash
-$ composer require symplify/modular-routing
+composer require symplify/modular-routing
 ```
 
 Add bundle to `AppKernel.php`:
@@ -100,7 +100,7 @@ final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 # Testing
 
 ```bash
-$ vendor/bin/phpunit
+vendor/bin/phpunit
 ```
 
 
