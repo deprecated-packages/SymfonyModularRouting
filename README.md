@@ -45,7 +45,7 @@ class AppKernel extends Kernel
     final class SomeRouteCollectionProvider implements RouteCollectionProviderInterface
     {
         /**
-         * @return RouteCollection
+         * {@inheritdoc}
          */
         public function getRouteCollection()
         {
@@ -74,13 +74,12 @@ In case you want to load these files, just use [`AbstractRouteCollectionProvider
 with helper methods.
 
 ```php
-use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
 
 final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 {
-    /** 
-     * @return RouteCollection
+    /**
+     * {@inheritdoc}
      */
     public function getRouteCollection()
     {
