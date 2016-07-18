@@ -20,7 +20,7 @@ final class AppKernel extends Kernel
             new FrameworkBundle(),
             new CmfRoutingBundle(),
             new SymplifyModularRoutingBundle(),
-            new TwigBundle()
+            new TwigBundle(),
         ];
     }
 
