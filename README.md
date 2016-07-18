@@ -50,7 +50,7 @@ class AppKernel extends Kernel
         /**
          * {@inheritdoc}
          */
-        public function getRouteCollection()
+        public function getRouteCollection() : RouteCollection
         {
             $routeCollection = new RouteCollection();
             $routeCollection->add('my_route', new Route('/hello'));
@@ -79,6 +79,7 @@ In case you want to load these files, just use [`AbstractRouteCollectionProvider
 with helper methods.
 
 ```php
+use Symfony\Component\Routing\RouteCollection;
 use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
 
 final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
@@ -86,7 +87,7 @@ final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
     /**
      * {@inheritdoc}
      */
-    public function getRouteCollection()
+    public function getRouteCollection() : RouteCollection
     {
         return $this->loadRouteCollectionFromFiles([
             __DIR__.'/routes.xml',
