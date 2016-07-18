@@ -11,7 +11,7 @@ final class PhpRouteCollectionProvider implements RouteCollectionProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function getRouteCollection()
+    public function getRouteCollection() : RouteCollection
     {
         $routeCollection = new RouteCollection();
         $routeCollection->add('my_route', new Route('/hello'));

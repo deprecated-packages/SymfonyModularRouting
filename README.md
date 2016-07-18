@@ -12,7 +12,6 @@ To add routes you usually need to add few lines to `app/config/routing.yml`. If 
 **Thanks to this router, you can add them easily as via service loader**.
 
 
-
 ## Install
 
 ```bash
@@ -102,14 +101,15 @@ final class FilesRouteCollectionProvider extends AbstractRouteCollectionProvider
 ```
 
 
-# Testing
+## Testing
 
 ```bash
+vendor/bin/symplify-cs check src tests
 vendor/bin/phpunit
 ```
 
 
-# Contributing
+## Contributing
 
 Rules are simple:
 

@@ -54,7 +54,7 @@ final class ModularRouter implements ModularRouterInterface
     /**
      * {@inheritdoc}
      */
-    public function getRouteCollection()
+    public function getRouteCollection() : RouteCollection
     {
         return $this->routeCollection;
     }
@@ -79,7 +79,7 @@ final class ModularRouter implements ModularRouterInterface
     /**
      * {@inheritdoc}
      */
-    public function match($pathinfo)
+    public function match($pathinfo) : array
     {
         return $this->getUrlMatcher()
             ->match($pathinfo);
@@ -93,26 +93,24 @@ final class ModularRouter implements ModularRouterInterface
         // this method is never used
     }
 
-    /**
-     * @return UrlGeneratorInterface
-     */
-    private function getUrlGenerator()
+    private function getUrlGenerator() : UrlGeneratorInterface
     {
-        if (null === $this->urlGenerator) {
-            $this->urlGenerator = new UrlGenerator($this->getRouteCollection(), $this->requestContext);
+        if ($this->urlGenerator) {
+            return $this->urlGenerator;
         }
+
+        $this->urlGenerator = new UrlGenerator($this->getRouteCollection(), $this->requestContext);
 
         return $this->urlGenerator;
     }
 
-    /**
-     * @return UrlMatcherInterface
-     */
-    private function getUrlMatcher()
+    private function getUrlMatcher() : UrlMatcherInterface
     {
-        if (null === $this->urlMatcher) {
-            $this->urlMatcher = new UrlMatcher($this->getRouteCollection(), $this->requestContext);
+        if ($this->urlMatcher) {
+            return $this->urlMatcher;
         }
+
+        $this->urlMatcher = new UrlMatcher($this->getRouteCollection(), $this->requestContext);
 
         return $this->urlMatcher;
     }

@@ -2,11 +2,10 @@
 
 namespace Symplify\ModularRouting\Tests;
 
-use PHPUnit_Framework_TestCase;
-use Symfony\Component\Routing\Route;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\RouterInterface;
 
-final class CompleteTest extends PHPUnit_Framework_TestCase
+final class CompleteTest extends TestCase
 {
     /**
      * @var RouterInterface

@@ -3,6 +3,7 @@
 namespace Symplify\ModularRouting\Tests;
 
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -19,6 +20,7 @@ final class AppKernel extends Kernel
             new FrameworkBundle(),
             new CmfRoutingBundle(),
             new SymplifyModularRoutingBundle(),
+            new TwigBundle()
         ];
     }
 

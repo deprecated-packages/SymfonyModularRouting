@@ -11,8 +11,5 @@ use Symfony\Component\Routing\RouteCollection;
 
 interface RouteCollectionProviderInterface
 {
-    /**
-     * @return RouteCollection
-     */
-    public function getRouteCollection();
+    public function getRouteCollection() : RouteCollection;
 }

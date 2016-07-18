@@ -1,6 +1,7 @@
 framework:
     router: { resource: "routing.yml" }
-
+    templating:
+        engines: ['twig', 'php']
 
 parameters:
     kernel.secret: 123
