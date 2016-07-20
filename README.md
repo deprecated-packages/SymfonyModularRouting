@@ -60,14 +60,12 @@ class AppKernel extends Kernel
     }
     ```
 
-2. Register service with a tag
+2. Register service
 
     ```yml
     services:
         some_module.route_provider:
             class: SomeModule\Routing\SomeRouteCollectionProvider
-            tags:
-                - { name: symplify.route_collection_provider }
     ```
 
 That's all!

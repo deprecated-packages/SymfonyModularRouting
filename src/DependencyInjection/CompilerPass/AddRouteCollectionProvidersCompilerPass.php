@@ -10,24 +10,40 @@ namespace Symplify\ModularRouting\DependencyInjection\CompilerPass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
+use Symplify\ModularRouting\Contract\Routing\RouteCollectionProviderInterface;
 
 final class AddRouteCollectionProvidersCompilerPass implements CompilerPassInterface
 {
     /**
-     * @var string
+     * @var ContainerBuilder
      */
-    const TAG_ROUTE_COLLECTION_PROVIDER = 'symplify.route_collection_provider';
+    private $containerBuilder;
 
     /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $containerBuilder)
     {
-        $modularRouterDefinition = $containerBuilder->getDefinition('symplify.modular_routing.modular_router');
-        $taggedServices = $containerBuilder->findTaggedServiceIds(self::TAG_ROUTE_COLLECTION_PROVIDER);
+        $this->containerBuilder = $containerBuilder;
 
-        foreach ($taggedServices as $serviceId => $attributes) {
+        $modularRouterDefinition = $containerBuilder->getDefinition('symplify.modular_routing.modular_router');
+        foreach ($this->getAllRouteCollectionProviders() as $serviceId => $attributes) {
             $modularRouterDefinition->addMethodCall('addRouteCollectionProvider', [new Reference($serviceId)]);
         }
+    }
+
+    /**
+     * @return RouteCollectionProviderInterface[]
+     */
+    private function getAllRouteCollectionProviders() : array
+    {
+        $filters = [];
+        foreach ($this->containerBuilder->getDefinitions() as $name => $definition) {
+            if (is_subclass_of($definition->getClass(), RouteCollectionProviderInterface::class)) {
+                $filters[$name] = $definition;
+            }
+        }
+
+        return $filters;
     }
 }
